@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trinidad &amp; Tobago Automobile Association – Serving Members Since 1911</title>
+  <link rel="icon" type="image/png" href="images/TTAA_2026_Vertical.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <script src="https://www.google.com/recaptcha/api.js?render=6LcriRstAAAAALsMavZY9s6byi-qQHxgpV_jy4hm" async defer></script>
+  <style>
+    :root {
+      --navy:   #030e2e;
+      --deep:   #050f2a;
+      --royal:  #0c2fa0;
+      --mid:    #1745c4;
+      --sky:    #1e6ee8;
+      --cyan:   #2dd4fa;
+      --gold:   #f5c518;
+      --offwh:  #ccd8f0;
+      --text:   #8fa5cc;
+      --card:   rgba(12,47,160,.15);
+      --bdr:    rgba(29,110,232,.22);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Source Sans 3',sans-serif;background:var(--navy);color:var(--text);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 2rem;background:rgba(3,14,46,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(45,212,250,.1)}
+    .nav-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;flex-shrink:0}
+    .nav-logo img{height:40px;width:auto}
+    .nav-logo-txt strong{display:block;font-family:'Oswald',sans-serif;font-size:.76rem;font-weight:600;color:#fff;letter-spacing:.06em;text-transform:uppercase}
+    .nav-logo-txt span{font-size:.65rem;color:var(--cyan);letter-spacing:.06em;text-transform:uppercase;font-family:'Oswald',sans-serif}
+    .nav-links{display:flex;gap:.1rem;list-style:none;flex-wrap:nowrap}
+    .nav-links a{text-decoration:none;color:var(--offwh);font-size:.74rem;letter-spacing:.07em;text-transform:uppercase;font-family:'Oswald',sans-serif;font-weight:400;padding:.42rem .65rem;border-radius:3px;transition:color .2s,background .2s;white-space:nowrap}
+    .nav-links a:hover{color:var(--cyan);background:rgba(45,212,250,.07)}
+    .nav-cta{background:var(--mid);color:#fff;flex-shrink:0;padding:.48rem 1.1rem;border-radius:3px;font-family:'Oswald',sans-serif;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:background .2s;white-space:nowrap}
+    .nav-cta:hover{background:var(--sky)}
+    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .ham span{display:block;width:24px;height:2px;background:var(--offwh);border-radius:2px}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:66px}
+    .hero-bg{position:absolute;inset:0;background-image:url('images/ttaabanner.jpg');background-size:cover;background-position:center center;filter:brightness(.28) saturate(1.5)}
+    .hero-ov{position:absolute;inset:0;background:linear-gradient(120deg,rgba(3,14,46,.95) 0%,rgba(12,47,160,.35) 65%,transparent 100%)}
+    .hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(var(--cyan) 1px,transparent 1px),linear-gradient(90deg,var(--cyan) 1px,transparent 1px);background-size:60px 60px}
+    .hero-content{position:relative;z-index:2;max-width:680px;padding:3rem 2rem 3rem 7vw}
+    .hero-pill{display:inline-flex;align-items:center;gap:.5rem;background:rgba(45,212,250,.1);border:1px solid rgba(45,212,250,.3);border-radius:99px;padding:.33rem 1rem;font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.4rem}
+    .hero-pill::before{content:'●';font-size:.5rem;animation:blink 1.6s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    h1.htitle{font-family:'Oswald',sans-serif;font-size:clamp(2.5rem,5.5vw,4.4rem);font-weight:700;line-height:1.05;color:#fff;text-transform:uppercase;margin-bottom:1.4rem;letter-spacing:.02em}
+    h1.htitle em{font-style:normal;color:var(--cyan)}
+    .hero-sub{font-size:1.02rem;line-height:1.75;color:var(--offwh);max-width:500px;margin-bottom:2.2rem}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-p{background:var(--mid);color:#fff;padding:.78rem 2.1rem;border-radius:3px;font-family:'Oswald',sans-serif;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;display:inline-block}
+    .btn-p:hover{background:var(--sky);transform:translateY(-2px)}
+    .btn-g{border:1.5px solid rgba(45,212,250,.6);color:var(--cyan);padding:.78rem 2.1rem;border-radius:3px;font-family:'Oswald',sans-serif;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .2s;display:inline-block}
+    .btn-g:hover{background:var(--cyan);color:var(--navy)}
+    .hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--text);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;font-family:'Oswald',sans-serif;z-index:2}
+    .hero-scroll::after{content:'';width:1px;height:34px;background:linear-gradient(var(--cyan),transparent);animation:spulse 1.8s infinite}
+    @keyframes spulse{0%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(1.5)}}
+
+    /* STAT STRIP */
+    .stat-strip{background:linear-gradient(90deg,#091a50 0%,var(--royal) 50%,#091a50 100%);display:flex;justify-content:space-around;flex-wrap:wrap;padding:1.2rem 2rem;gap:.5rem;border-top:1px solid rgba(45,212,250,.15);border-bottom:1px solid rgba(45,212,250,.15)}
+    .stat-item{text-align:center;padding:.3rem 1rem}
+    .stat-item strong{display:block;font-family:'Oswald',sans-serif;font-size:1.9rem;color:var(--cyan);line-height:1}
+    .stat-item span{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--offwh)}
+
+    /* SHARED */
+    section{padding:5.5rem 2rem}
+    .container{max-width:1200px;margin:0 auto}
+    .label{font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:.5rem}
+    h2.stitle{font-family:'Oswald',sans-serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:#fff;text-transform:uppercase;line-height:1.08;margin-bottom:.9rem}
+    h2.stitle em{font-style:normal;color:var(--cyan)}
+    .divider{width:50px;height:3px;background:var(--cyan);margin:1rem 0 1.8rem}
+    .bt{font-size:.97rem;line-height:1.8;margin-bottom:1.1rem}
+
+    /* ABOUT */
+    #about{background:linear-gradient(160deg,#071560 0%,var(--navy) 100%)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
+    .about-img-wrap{position:relative}
+    .about-img-wrap img{width:100%;border-radius:6px;display:block;border:1px solid var(--bdr)}
+    .about-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--royal);border:2px solid var(--cyan);border-radius:6px;padding:1.1rem 1.5rem;text-align:center}
+    .about-badge strong{display:block;font-family:'Oswald',sans-serif;font-size:2.8rem;color:var(--cyan);line-height:1}
+    .about-badge span{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--offwh)}
+    .pnote{margin-top:1.4rem;padding:1rem 1.3rem;background:rgba(12,47,160,.2);border-left:3px solid var(--cyan);border-radius:0 4px 4px 0;font-size:.9rem;line-height:1.6}
+    .pnote strong{color:var(--offwh)}
+    .affil-row{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap;margin-top:1.6rem}
+    .abadge{background:rgba(12,47,160,.3);border:1px solid var(--bdr);border-radius:4px;padding:.45rem .9rem;font-family:'Oswald',sans-serif;font-size:.74rem;font-weight:600;color:var(--offwh);letter-spacing:.06em;text-transform:uppercase}
+
+    /* SERVICES */
+    #services{background:var(--navy)}
+    .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.4rem;margin-top:2.5rem}
+    .svc-card{background:var(--card);border:1px solid var(--bdr);border-radius:6px;padding:2rem 1.7rem;transition:transform .22s,border-color .22s;position:relative;overflow:hidden}
+    .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s}
+    .svc-card:hover{transform:translateY(-5px);border-color:rgba(45,212,250,.4)}
+    .svc-card:hover::before{opacity:1}
+    .svc-icon{width:48px;height:48px;border-radius:50%;background:rgba(12,47,160,.5);border:1px solid rgba(45,212,250,.25);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.1rem}
+    .svc-card h3{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.6rem}
+    .svc-card p{font-size:.89rem;line-height:1.7}
+    .svc-lnk{display:inline-block;margin-top:1.1rem;color:var(--cyan);font-size:.78rem;text-decoration:none;text-transform:uppercase;letter-spacing:.1em;font-family:'Oswald',sans-serif;padding-bottom:1px;border-bottom:1px solid rgba(45,212,250,.3);transition:border-color .2s}
+    .svc-lnk:hover{border-color:var(--cyan)}
+
+    /* MEMBERSHIP */
+    #membership{background:linear-gradient(160deg,#071560 0%,var(--navy) 100%)}
+    .mem-intro{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-bottom:3.5rem;align-items:end}
+    .price-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem}
+    .price-card{flex:1;min-width:170px;background:var(--card);border:1px solid var(--bdr);border-radius:6px;padding:1.5rem 1.3rem;text-align:center}
+    .price-card.f{border-color:var(--cyan);background:rgba(12,47,160,.3)}
+    .price-tag{display:inline-block;background:var(--cyan);color:var(--navy);font-family:'Oswald',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .65rem;border-radius:99px;margin-bottom:.8rem}
+    .price-amt{font-family:'Oswald',sans-serif;font-size:2.1rem;font-weight:700;color:#fff;line-height:1}
+    .price-amt sup{font-size:.85rem;vertical-align:super;color:var(--cyan)}
+    .price-per{font-size:.78rem;color:var(--text);margin-top:.3rem;text-transform:uppercase;letter-spacing:.06em}
+    .price-lbl{font-size:.78rem;color:var(--offwh);margin-top:.4rem}
+    .mem-note{font-size:.82rem;color:var(--text);margin-top:.7rem;line-height:1.6}
+    .ben-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:1rem}
+    .ben-item{display:flex;gap:1rem;align-items:flex-start;background:var(--card);border:1px solid var(--bdr);border-radius:6px;padding:1.2rem 1.3rem;transition:border-color .2s}
+    .ben-item:hover{border-color:rgba(45,212,250,.35)}
+    .b-icon{flex-shrink:0;width:38px;height:38px;background:rgba(12,47,160,.5);border:1px solid rgba(45,212,250,.2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+    .ben-item h4{font-family:'Oswald',sans-serif;font-size:.92rem;color:#fff;font-weight:600;margin-bottom:.22rem;text-transform:uppercase}
+    .ben-item p{font-size:.86rem;line-height:1.6}
+    .hl{color:var(--cyan);font-weight:600}
+    .join-row{margin-top:2.4rem;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+    .join-note{font-size:.85rem;color:var(--text)}
+    .join-note strong{color:var(--offwh)}
+
+    /* HOW-TO BOX */
+    .howto-box{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:1.8rem}
+    .howto-step{display:flex;gap:.8rem;margin-bottom:1rem}
+    .howto-num{width:28px;height:28px;background:var(--royal);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Oswald',sans-serif;font-size:.8rem;color:var(--cyan);font-weight:700}
+    .howto-step h4{color:var(--offwh);font-size:.9rem;font-family:'Oswald',sans-serif;margin-bottom:.18rem}
+    .howto-step p{font-size:.84rem;line-height:1.55}
+
+    /* DEFENSIVE */
+    #defensive{background:var(--navy);position:relative;overflow:hidden}
+    #defensive::after{content:'';position:absolute;bottom:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(12,47,160,.18) 0%,transparent 70%);pointer-events:none}
+    .def-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .def-img-wrap{position:relative;border-radius:8px}
+    .def-img-wrap img{width:100%;display:block;border-radius:6px;border:1px solid rgba(45,212,250,.3)}
+    .def-badge{position:absolute;top:1.1rem;left:1.1rem;background:var(--cyan);color:var(--navy);font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.33rem .85rem;border-radius:2px}
+    .def-ribbon{position:absolute;bottom:-1.1rem;right:1.1rem;background:var(--gold);color:var(--navy);font-family:'Oswald',sans-serif;font-size:.76rem;font-weight:700;padding:.55rem 1rem;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+    .def-feats{display:flex;flex-direction:column;gap:1rem;margin:1.8rem 0}
+    .def-feat{display:flex;gap:.9rem;align-items:flex-start}
+    .def-num{flex-shrink:0;width:34px;height:34px;background:var(--royal);border:1px solid rgba(45,212,250,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:.88rem;color:var(--cyan);font-weight:700}
+    .def-feat h4{font-family:'Oswald',sans-serif;font-size:.93rem;color:#fff;font-weight:600;margin-bottom:.2rem}
+    .def-feat p{font-size:.87rem;line-height:1.6}
+    .fia-q{background:rgba(12,47,160,.25);border-left:3px solid var(--gold);padding:1rem 1.3rem;border-radius:0 4px 4px 0;font-size:.87rem;line-height:1.6;margin-top:1.6rem}
+    .fia-q strong{color:var(--gold)}
+
+    /* MILESTONE BANNER — pure CSS */
+    #milestone-banner{padding:5rem 2rem;background:linear-gradient(135deg,#050f2a 0%,#0c2fa0 50%,#050f2a 100%);position:relative;overflow:hidden;border-top:1px solid rgba(45,212,250,.15);border-bottom:1px solid rgba(45,212,250,.15)}
+    .mb-ring{position:absolute;border-radius:50%;border:1px solid rgba(45,212,250,.08);pointer-events:none}
+    .mb-ring:nth-child(1){width:600px;height:600px;top:-250px;right:-100px}
+    .mb-ring:nth-child(2){width:400px;height:400px;top:-150px;right:0}
+    .mb-ring:nth-child(3){width:800px;height:800px;bottom:-400px;left:-200px;border-color:rgba(245,197,24,.05)}
+    .mb-lines{position:absolute;inset:0;opacity:.03;background:repeating-linear-gradient(-45deg,var(--cyan) 0px,var(--cyan) 1px,transparent 1px,transparent 40px)}
+    .mb-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto}
+    .mb-ghost{font-family:'Oswald',sans-serif;font-size:clamp(4rem,12vw,9rem);font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(45,212,250,.2);letter-spacing:-.02em;display:block;margin-bottom:-.5em;pointer-events:none;user-select:none}
+    .mb-head{font-family:'Oswald',sans-serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1rem}
+    .mb-head em{font-style:normal;color:var(--cyan)}
+    .mb-sub{font-size:1.02rem;color:var(--offwh);line-height:1.7;margin-bottom:2rem}
+    .mb-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:2.5rem}
+    .mb-stat strong{display:block;font-family:'Oswald',sans-serif;font-size:2.3rem;color:var(--gold);line-height:1}
+    .mb-stat span{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--offwh)}
+
+    /* ═══ TIMELINE ═══ */
+    #history{background:var(--navy)}
+    .tl-intro{text-align:center;margin-bottom:4rem}
+    .tl-intro .divider{margin:1rem auto}
+
+    .timeline{position:relative;max-width:1020px;margin:0 auto}
+    /* central spine */
+    .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent 0%,var(--royal) 6%,var(--cyan) 50%,var(--royal) 94%,transparent 100%);transform:translateX(-50%)}
+
+    /* Each row is 3 columns: left-content | spine | right-content */
+    .tl-row{display:grid;grid-template-columns:1fr 64px 1fr;align-items:start;padding-bottom:3.5rem}
+
+    .tl-left{padding-right:2rem}
+    .tl-right{padding-left:2rem}
+    .tl-spine{display:flex;justify-content:center;padding-top:.85rem;position:relative;z-index:2}
+
+    .dot-o{width:22px;height:22px;border-radius:50%;background:var(--navy);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(45,212,250,.12)}
+    .dot-i{width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+    .dot-o.gld{border-color:var(--gold);box-shadow:0 0 0 4px rgba(245,197,24,.15)}
+    .dot-o.gld .dot-i{background:var(--gold)}
+    .dot-o.now{border-color:var(--cyan);box-shadow:0 0 0 6px rgba(45,212,250,.15),0 0 20px rgba(45,212,250,.25)}
+
+    .tl-card{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:1.5rem 1.7rem;position:relative;transition:border-color .2s,transform .2s}
+    .tl-card:hover{border-color:rgba(45,212,250,.4);transform:translateY(-3px)}
+    /* arrow right (left-side card pointing → spine) */
+    .tl-left .tl-card::after{content:'';position:absolute;right:-10px;top:1.1rem;width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:10px solid rgba(12,47,160,.35)}
+    /* arrow left (right-side card pointing ← spine) */
+    .tl-right .tl-card::after{content:'';position:absolute;left:-10px;top:1.1rem;width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-right:10px solid rgba(12,47,160,.35)}
+    /* hide the unused side */
+    .tl-left.empty,.tl-right.empty{visibility:hidden;pointer-events:none}
+
+    .tl-yr{display:inline-block;font-family:'Oswald',sans-serif;font-size:1.55rem;font-weight:700;color:var(--cyan);line-height:1;margin-bottom:.35rem}
+    .tl-yr.gld{color:var(--gold)}
+    .tl-card h3{font-family:'Oswald',sans-serif;font-size:.92rem;color:#fff;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;font-weight:600}
+    .tl-card p{font-size:.86rem;line-height:1.65}
+    .award-flag{display:inline-flex;align-items:center;gap:.3rem;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.3);border-radius:3px;padding:.28rem .55rem;margin-top:.6rem;font-family:'Oswald',sans-serif;font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.08em}
+
+    /* IDP */
+    #idp{background:linear-gradient(160deg,#071560 0%,var(--navy) 100%)}
+    .idp-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start}
+    .idp-steps{display:flex;flex-direction:column;gap:1rem;margin:1.8rem 0}
+    .idp-step{display:flex;gap:1rem;align-items:flex-start}
+    .idp-snum{flex-shrink:0;width:32px;height:32px;background:var(--royal);border:1px solid rgba(45,212,250,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:.88rem;color:var(--cyan);font-weight:700;margin-top:.1rem}
+    .idp-step h4{font-family:'Oswald',sans-serif;color:#fff;font-size:.92rem;margin-bottom:.2rem;text-transform:uppercase}
+    .idp-step p{font-size:.87rem;line-height:1.6}
+    .idp-box{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:2rem;position:sticky;top:90px}
+    .idp-box h3{font-family:'Oswald',sans-serif;font-size:1.1rem;color:var(--cyan);text-transform:uppercase;margin-bottom:1.2rem}
+    .idp-fact{display:flex;gap:.65rem;margin-bottom:.85rem;font-size:.89rem;line-height:1.6;align-items:flex-start}
+    .idp-fact::before{content:'✓';color:var(--cyan);font-weight:700;flex-shrink:0;margin-top:.05rem}
+    .ctry-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.1rem 0}
+    .chip{background:rgba(12,47,160,.3);border:1px solid var(--bdr);border-radius:99px;padding:.22rem .65rem;font-size:.73rem;color:var(--offwh);font-family:'Oswald',sans-serif}
+    .idp-docs{margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid var(--bdr)}
+    .idp-docs h4{font-family:'Oswald',sans-serif;color:var(--offwh);font-size:.85rem;text-transform:uppercase;margin-bottom:.65rem;letter-spacing:.06em}
+    .doc-list{list-style:none}
+    .doc-list li{font-size:.86rem;padding:.28rem 0;color:var(--text);display:flex;gap:.45rem}
+    .doc-list li::before{content:'→';color:var(--cyan);flex-shrink:0}
+
+    /* NEWS */
+    #news{background:var(--navy)}
+    .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;margin-top:2.5rem}
+    .news-card{background:var(--card);border:1px solid var(--bdr);border-radius:8px;overflow:hidden;transition:transform .22s,border-color .22s;display:flex;flex-direction:column}
+    .news-card:hover{transform:translateY(-4px);border-color:rgba(45,212,250,.35)}
+    .news-cat{padding:.9rem 1.3rem .3rem;font-family:'Oswald',sans-serif;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan)}
+    .news-card h3{padding:.3rem 1.3rem .75rem;font-family:'Oswald',sans-serif;font-size:.97rem;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:.03em;line-height:1.35}
+    .news-card p{padding:0 1.3rem 1rem;font-size:.86rem;line-height:1.65;flex:1}
+    .news-foot{padding:.75rem 1.3rem;margin-top:auto;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center}
+    .news-date{font-size:.76rem;color:var(--text);font-family:'Oswald',sans-serif}
+    .news-lnk{text-decoration:none;color:var(--cyan);font-size:.76rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em}
+
+    /* CONTACT */
+    #contact{background:linear-gradient(160deg,#071560 0%,#020c28 100%)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem}
+    .contact-info h3{font-family:'Oswald',sans-serif;font-size:1.35rem;color:#fff;text-transform:uppercase;margin-bottom:1.7rem}
+    .c-row{display:flex;gap:1rem;margin-bottom:1.4rem;align-items:flex-start}
+    .c-ico{flex-shrink:0;width:38px;height:38px;background:rgba(12,47,160,.4);border:1px solid var(--bdr);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+    .c-lbl{display:block;font-family:'Oswald',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:.22rem}
+    .c-val{font-size:.93rem;color:var(--offwh);line-height:1.5}
+    .c-val a{color:var(--cyan);text-decoration:none}
+    .soc-row{display:flex;gap:.65rem;margin-top:1.8rem;flex-wrap:wrap}
+    .soc-btn{display:flex;align-items:center;gap:.45rem;background:rgba(12,47,160,.3);border:1px solid var(--bdr);border-radius:4px;padding:.48rem .95rem;text-decoration:none;color:var(--offwh);font-family:'Oswald',sans-serif;font-size:.73rem;text-transform:uppercase;letter-spacing:.06em;transition:border-color .2s,background .2s}
+    .soc-btn:hover{border-color:var(--cyan);background:rgba(45,212,250,.08);color:var(--cyan)}
+    .form-wrap{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:2.3rem}
+    .form-wrap h3{font-family:'Oswald',sans-serif;font-size:1.25rem;color:#fff;text-transform:uppercase;margin-bottom:1.5rem}
+    .f2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .frow{margin-bottom:1rem}
+    .frow label{display:block;font-family:'Oswald',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--offwh);margin-bottom:.38rem}
+    .frow input,.frow select,.frow textarea{width:100%;background:rgba(3,14,46,.6);border:1px solid rgba(29,110,232,.3);border-radius:3px;color:var(--offwh);font-family:'Source Sans 3',sans-serif;font-size:.92rem;padding:.65rem 1rem;outline:none;transition:border-color .2s}
+    .frow input:focus,.frow select:focus,.frow textarea:focus{border-color:var(--cyan)}
+    .frow textarea{resize:vertical;min-height:96px}
+    .frow select option{background:#030e2e}
+    .fsub{width:100%;background:var(--mid);border:none;cursor:pointer;color:#fff;font-family:'Oswald',sans-serif;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;padding:.88rem;border-radius:3px;transition:background .2s}
+    .fsub:hover{background:var(--sky)}
+
+    /* FOOTER */
+    footer{background:#020a1e;border-top:1px solid rgba(29,110,232,.18);padding:3.5rem 2rem 1.5rem}
+    .foot-wrap{max-width:1200px;margin:0 auto}
+    .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+    .foot-brand img{height:50px;margin-bottom:.85rem;display:block}
+    .foot-brand p{font-size:.86rem;line-height:1.7;color:var(--text)}
+    .foot-col h4{font-family:'Oswald',sans-serif;font-size:.78rem;color:var(--offwh);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.85rem}
+    .foot-col ul{list-style:none}
+    .foot-col li{margin-bottom:.42rem}
+    .foot-col a{text-decoration:none;color:var(--text);font-size:.86rem;transition:color .2s}
+    .foot-col a:hover{color:var(--cyan)}
+    .foot-bot{border-top:1px solid rgba(29,110,232,.12);padding-top:1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+    .foot-bot p{font-size:.76rem;color:#4a5a7a}
+    .foot-mbadge{display:flex;gap:.55rem;align-items:center;font-family:'Oswald',sans-serif;font-size:.7rem;color:var(--text);letter-spacing:.08em;text-transform:uppercase}
+    .mbdot{width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+
+    /* ANIMATIONS */
+    .rev{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+    .rev-l{opacity:0;transform:translateX(-26px);transition:opacity .65s ease,transform .65s ease}
+    .rev-r{opacity:0;transform:translateX(26px);transition:opacity .65s ease,transform .65s ease}
+    .rev.in,.rev-l.in,.rev-r.in{opacity:1;transform:none}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      .about-grid,.def-grid,.idp-grid,.contact-grid,.mem-intro{grid-template-columns:1fr}
+      .about-badge{right:0;bottom:-1rem}
+      .idp-box{position:static}
+      .foot-top{grid-template-columns:1fr 1fr}
+      /* collapse timeline to single column */
+      .timeline::before{left:14px;transform:none}
+      .tl-row{grid-template-columns:28px 1fr;gap:0}
+      .tl-left,.tl-right{padding:0 0 0 1rem}
+      .tl-left.empty,.tl-right.empty{display:none}
+      /* force all cards to the right column */
+      .tl-row .tl-left:not(.empty){grid-column:2;grid-row:1}
+      .tl-row .tl-spine{grid-column:1;grid-row:1}
+      .tl-left .tl-card::after,.tl-right .tl-card::after{display:none}
+      .nav-links{display:none}
+      .ham{display:flex}
+    }
+    @media(max-width:600px){
+      section{padding:3.5rem 1.2rem}
+      .foot-top{grid-template-columns:1fr}
+      .f2{grid-template-columns:1fr}
+      .mb-stats{gap:1.4rem}
+    }
+    /* Affiliation logos */
+    .affil-logo{height:32px;width:auto;max-width:90px;object-fit:contain;flex-shrink:0;background:#fff;border-radius:4px;padding:4px 8px;opacity:.92;transition:opacity .2s}
+    .affil-logo:hover{opacity:1}
+    .affil-logo.natural{background:#fff}
+    /* Footer logo */
+    .foot-logo{height:55px;width:auto;display:block;margin-bottom:.85rem;background:#fff;border-radius:4px;padding:4px 8px}
+    @media(max-width:960px){.affil-logo{height:26px;max-width:65px}}
+    @media(max-width:600px){.affil-logo{height:22px;max-width:55px}.affil-row{gap:.65rem}}
+    .grecaptcha-badge{visibility:hidden}
+    .form-status{display:none;margin-top:1rem;padding:.85rem 1.1rem;border-radius:4px;font-size:.9rem;line-height:1.5;text-align:center}
+    .form-status.ok{background:rgba(45,212,250,.1);border:1px solid rgba(45,212,250,.35);color:var(--cyan)}
+    .form-status.err{background:rgba(220,50,50,.1);border:1px solid rgba(220,50,50,.35);color:#f87171}
+    .fsub:disabled{opacity:.6;cursor:not-allowed}
+    /* honeypot */
+    .hp-field{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+  </style>
+</head>
+<body>
+
+<!-- ══════ NAV ══════ -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#hero">
+    <img src="images/TTAA_2026_Vertical.png" alt="TTAA Logo" style="background:#fff;border-radius:3px;padding:2px 4px" />
+    <div class="nav-logo-txt">
+      <strong>Trinidad &amp; Tobago</strong>
+      <span>Automobile Association</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#defensive">Driver Training</a></li>
+    <li><a href="#idp">Int'l Driver Permit</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#membership">Join Us</a>
+  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-pill">Serving Members Since 1911</div>
+    <h1 class="htitle">Trinidad &amp;<br>Tobago<br><em>Automobile</em><br>Association</h1>
+    <p class="hero-sub">Your official FIA member club — protecting T&amp;T motorists, advancing road safety, and connecting you to the world for over a century.</p>
+    <div class="hero-btns">
+      <a class="btn-p" href="#membership">Become a Member</a>
+      <a class="btn-g" href="#defensive">Defensive Driving</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ══════ STAT STRIP ══════ -->
+<div class="stat-strip">
+  <div class="stat-item rev"><strong>1911</strong><span>Established</span></div>
+  <div class="stat-item rev"><strong>115+</strong><span>Years of Service</span></div>
+  <div class="stat-item rev"><strong>150+</strong><span>Countries via IDP</span></div>
+  <div class="stat-item rev"><strong>FIA</strong><span>Member Club</span></div>
+  <div class="stat-item rev"><strong>Gold</strong><span>Medal of Merit</span></div>
+</div>
+
+<!-- ══════ ABOUT ══════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap rev-l">
+        <img src="images/ttaasocialsbanner.jpg" alt="Trinidad &amp; Tobago Automobile Association" />
+        <div class="about-badge"><strong>Est.</strong><span>1911</span></div>
+      </div>
+      <div class="rev-r">
+        <span class="label">Who We Are</span>
+        <h2 class="stitle">Over a Century of<br><em>Serving Motorists</em></h2>
+        <div class="divider"></div>
+        <p class="bt">The Trinidad &amp; Tobago Automobile Association (TTAA) is a non-profit organisation and the premier motoring authority of Trinidad &amp; Tobago. Founded in 1911, we have dedicated over 115 years to protecting and advancing the legitimate interests of our members, while fostering reciprocal relationships with motoring organisations worldwide.</p>
+        <p class="bt">As the official <strong style="color:var(--offwh)">FIA (Fédération Internationale de l'Automobile)</strong> member club for mobility and motoring in T&amp;T, we represent this nation in the world's foremost motoring authority — the same body that governs Formula One and global road safety advocacy.</p>
+        <p class="bt">We are a proud partner of <strong style="color:var(--offwh)">FIA Action for Road Safety</strong>. The TTAA is led by President <strong style="color:var(--offwh)">Selwyn Persad</strong>.</p>
+        <div class="pnote"><strong>Membership is open from age 17.</strong> The TTAA welcomes all T&amp;T drivers — from new licence holders to decades-long motorists.</div>
+        <div class="affil-row">
+          <img src="images/fia_emblem.png" alt="FIA" class="affil-logo" />
+          <img src="images/action-for-road-grande.png" alt="FIA Action for Road Safety" class="affil-logo" />
+          <img src="images/Environmental_Accreditation_1_Star.png" alt="FIA Environmental Accreditation" class="affil-logo" />
+          <img src="images/AIT.png" alt="AIT" class="affil-logo natural" />
+          <img src="images/fia_americas_logo.jpg" alt="FIA Americas" class="affil-logo natural" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SERVICES ══════ -->
+<section id="services">
+  <div class="container">
+    <div class="rev" style="max-width:600px">
+      <span class="label">What We Offer</span>
+      <h2 class="stitle">Our <em>Services</em></h2>
+      <div class="divider"></div>
+      <p class="bt">From exclusive membership benefits to international driving permits and state-of-the-art driver training, the TTAA is your complete motoring partner.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card rev"><div class="svc-icon">🏅</div><h3>Membership</h3><p>Join T&amp;T's longest-standing motoring club. From just $250 TTD/year, access insurance discounts, driver training, and a nationwide motoring community.</p><a class="svc-lnk" href="#membership">View benefits →</a></div>
+      <div class="svc-card rev"><div class="svc-icon">🌍</div><h3>International Driver Permits</h3><p>The TTAA is the only authorised IDP issuer in T&amp;T. Drive legally in over 150 countries. Issued to T&amp;T nationals and CARICOM citizens. Fast, easy, same-day processing.</p><a class="svc-lnk" href="#idp">Learn more →</a></div>
+      <div class="svc-card rev"><div class="svc-icon">🎮</div><h3>Defensive Driver Training</h3><p>Our FIA-recognised Motion Simulation Defensive Driving Programme trains new and experienced drivers to handle real-world hazards safely. Multiple classes monthly.</p><a class="svc-lnk" href="#defensive">Sign up →</a></div>
+      <div class="svc-card rev"><div class="svc-icon">🚐</div><h3>Fleet / Corporate Membership</h3><p>Companies with fleet vehicles can register under the TTAA's corporate programme, extending full membership benefits — including driver training and insurance discounts — to all their drivers.</p><a class="svc-lnk" href="#membership">Enquire →</a></div>
+      <div class="svc-card rev"><div class="svc-icon">🛡️</div><h3>Road Safety Advocacy</h3><p>As a key voice in T&amp;T's road safety landscape, the TTAA works with government bodies, the FIA, and local stakeholders to advocate for safer roads and responsible driving culture nationwide.</p><a class="svc-lnk" href="#contact">Get involved →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ MEMBERSHIP ══════ -->
+<section id="membership">
+  <div class="container">
+    <div class="mem-intro">
+      <div class="rev-l">
+        <span class="label">Join the TTAA</span>
+        <h2 class="stitle">Membership <em>Benefits</em></h2>
+        <div class="divider"></div>
+        <p class="bt">With an annual fee lower than a single tank of fuel, TTAA membership puts powerful protections and privileges in your hands. Whether you drive daily or occasionally, membership pays for itself the moment you need it.</p>
+        <div class="price-row">
+          <div class="price-card f">
+            <span class="price-tag">New Member</span>
+            <div class="price-amt"><sup>$</sup>250</div>
+            <div class="price-per">TTD per year</div>
+            <div class="price-lbl">Initial membership fee</div>
+          </div>
+          <div class="price-card">
+            <span class="price-tag">Renewal</span>
+            <div class="price-amt"><sup>$</sup>200</div>
+            <div class="price-per">TTD per year</div>
+            <div class="price-lbl">Continuing member</div>
+          </div>
+        </div>
+        <p class="mem-note">Membership starts from the 1st of each month. Open to all drivers aged 17+. Apply in person at 8 Francis Road, Maraval, at any M&amp;M Insurance branch (San Fernando/Maraval), or email <a href="mailto:info@ttaa.co.tt" style="color:var(--cyan)">info@ttaa.co.tt</a>.</p>
+      </div>
+      <div class="rev-r">
+        <div class="howto-box">
+          <span class="label" style="margin-bottom:1rem">How to Join</span>
+          <div class="howto-step"><div class="howto-num">1</div><div><h4>Get the Application Form</h4><p>Available at the TTAA Port of Spain office or M&amp;M Insurance branches (San Fernando &amp; Maraval).</p></div></div>
+          <div class="howto-step"><div class="howto-num">2</div><div><h4>Provide Your Driver's Licence</h4><p>A valid T&amp;T national driver's licence is required at time of application.</p></div></div>
+          <div class="howto-step"><div class="howto-num">3</div><div><h4>Submit &amp; Pay</h4><p>Drop off in person at 8 Francis Road, Maraval, or email your completed form to <a href="mailto:info@ttaa.co.tt" style="color:var(--cyan)">info@ttaa.co.tt</a>.</p></div></div>
+          <div class="howto-step" style="margin-bottom:0"><div class="howto-num" style="background:rgba(45,212,250,.2);border:1px solid var(--cyan);">✓</div><div><h4 style="color:var(--cyan)">You're In!</h4><p>Membership activates from the 1st of the following month. All benefits apply immediately upon activation.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev" style="margin-bottom:1.7rem">
+      <span class="label">Member Privileges</span>
+      <h3 style="font-family:'Oswald',sans-serif;font-size:1.55rem;color:#fff;text-transform:uppercase">Everything Your Membership <em style="font-style:normal;color:var(--cyan)">Unlocks</em></h3>
+    </div>
+    <div class="ben-grid">
+      <div class="ben-item rev">
+        <div class="b-icon">💰</div>
+        <div><h4>Insurance Discount – Up to 10%</h4><p>Selected insurers give TTAA members a <span class="hl">10% discount on premiums</span>. Participating providers include <strong style="color:var(--offwh)">M&amp;M Insurance</strong> and <strong style="color:var(--offwh)">Maritime Insurance</strong>. On an average policy, this saving alone typically exceeds the full annual membership cost.</p></div>
+      </div>
+      <div class="ben-item rev">
+        <div class="b-icon">🌍</div>
+        <div><h4>Priority IDP Access</h4><p>Members receive <span class="hl">priority processing</span> for International Driver Permits, enabling legal driving in over 150 countries. Benefit from expedited service and expert IDP guidance as part of your membership.</p></div>
+      </div>
+      <div class="ben-item rev">
+        <div class="b-icon">🎮</div>
+        <div><h4>Defensive Driver Training Discounts</h4><p>Exclusive member pricing on the TTAA's <span class="hl">Motion Simulation Defensive Driver Training Programme</span> — internationally recognised by the FIA as a leading road safety innovation in the Americas and Caribbean.</p></div>
+      </div>
+      <div class="ben-item rev">
+        <div class="b-icon">🤝</div>
+        <div><h4>FIA Global Network &amp; Reciprocal Privileges</h4><p>Access the global FIA motoring network as an FIA member club. <span class="hl">Reciprocal membership privileges with member clubs worldwide</span> mean you have support, resources, and recognition in countries across the globe wherever you travel.</p></div>
+      </div>
+      <div class="ben-item rev">
+        <div class="b-icon">📢</div>
+        <div><h4>Motorist Advocacy &amp; Representation</h4><p>Your membership funds the TTAA's ongoing advocacy — lobbying government for safer roads, better traffic management, and <span class="hl">stronger legal protections for T&amp;T drivers</span> at both local and international levels.</p></div>
+      </div>
+      <div class="ben-item rev">
+        <div class="b-icon">🎪</div>
+        <div><h4>Community Events &amp; Road Rallies</h4><p>Participate in TTAA events including the <span class="hl">"On the Hunt" road trip treasure hunt and fun rally</span> — an FIA-featured initiative blending navigation, teamwork, and exploration of T&amp;T's scenic beauty while promoting road safety awareness.</p></div>
+      </div>
+    </div>
+    <div class="join-row rev">
+      <a class="btn-p" href="#contact">Apply for Membership Today</a>
+      <p class="join-note">Already a member? <strong>Renew at just $200 TTD/year.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ DEFENSIVE DRIVING ══════ -->
+<section id="defensive">
+  <div class="container">
+    <div class="def-grid">
+      <div class="def-img-wrap rev-l">
+        <img src="images/defensive_driving.jpg" alt="TTAA Defensive Driver Training with Motion Simulation" />
+        <span class="def-badge">Motion Simulation Technology</span>
+        <div class="def-ribbon">⭐ FIA Innovation Challenge Featured</div>
+      </div>
+      <div class="rev-r">
+        <span class="label">Driver Training Programme</span>
+        <h2 class="stitle">Defensive <em>Driver</em><br>Training</h2>
+        <div class="divider"></div>
+        <p class="bt">The TTAA has offered Defensive Driving courses since 1970 — making us the <strong style="color:var(--offwh)">first organisation to bring this training to T&amp;T</strong>. Today, we've evolved that programme with cutting-edge motion simulation technology recognised internationally by the FIA.</p>
+        <div class="def-feats">
+          <div class="def-feat"><div class="def-num">01</div><div><h4>Realistic Motion Simulation Rig</h4><p>Our professional driving simulator replicates emergency stops, wet roads, overtaking hazards, and night driving — all in a completely safe, off-road environment.</p></div></div>
+          <div class="def-feat"><div class="def-num">02</div><div><h4>Classroom Theory &amp; Presentations</h4><p>Each simulation session is complemented by structured classroom presentations covering defensive driving principles, hazard perception, and advanced road safety techniques.</p></div></div>
+          <div class="def-feat"><div class="def-num">03</div><div><h4>For All Drivers — Beginner to Experienced</h4><p>Whether you've just received your licence or have decades of driving experience, our programme is designed to challenge and sharpen skills at every level.</p></div></div>
+          <div class="def-feat"><div class="def-num">04</div><div><h4>Multiple Sessions Monthly</h4><p>Classes run multiple times each month at our Port of Spain office. Group and corporate bookings are available — contact us to schedule for your organisation.</p></div></div>
+        </div>
+        <div class="fia-q"><strong>FIA Recognition (2024):</strong> The TTAA's Motion Simulated Defensive Driving Programme — titled <em>"Stop the Carnage"</em> — was selected by the FIA as a featured innovation in the <em>FIA Innovation Challenge 2024, Region III</em>, recognising it as a leading road safety initiative in the Americas and Caribbean.</div>
+        <a class="btn-p" href="#contact" style="margin-top:1.8rem">Register for a Class</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ MILESTONE BANNER — pure CSS ══════ -->
+<div id="milestone-banner">
+  <div class="mb-ring"></div>
+  <div class="mb-ring"></div>
+  <div class="mb-ring"></div>
+  <div class="mb-lines"></div>
+  <div class="mb-content rev">
+    <span class="mb-ghost" aria-hidden="true">1911</span>
+    <h2 class="mb-head">A Record of <em>Firsts</em></h2>
+    <p class="mb-sub">Every major advancement in Trinidad &amp; Tobago road safety and motorist welfare carries the TTAA's fingerprints. From introducing traffic lights to pioneering driving simulators — over a century of Caribbean firsts.</p>
+    <a class="btn-g" href="#history">Explore Our History</a>
+    <div class="mb-stats">
+      <div class="mb-stat"><strong>10+</strong><span>National Firsts</span></div>
+      <div class="mb-stat"><strong>1982</strong><span>Gold Medal of Merit</span></div>
+      <div class="mb-stat"><strong>2024</strong><span>FIA Innovation Award</span></div>
+      <div class="mb-stat"><strong>115+</strong><span>Years Serving T&amp;T</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ HISTORY TIMELINE ══════ -->
+<section id="history">
+  <div class="container">
+    <div class="tl-intro rev">
+      <span class="label">Our Legacy</span>
+      <h2 class="stitle">A Timeline of <em>Achievements</em></h2>
+      <div class="divider"></div>
+      <p class="bt" style="max-width:620px;margin:0 auto">The TTAA has been first at every critical milestone in T&amp;T's motoring and road safety history. Here is the story of a century-old commitment to excellence.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- 1911 — LEFT -->
+      <div class="tl-row rev-l">
+        <div class="tl-left">
+          <div class="tl-card">
+            <span class="tl-yr">1911</span>
+            <h3>Association Founded &amp; First Roadside Assistance</h3>
+            <p>The TTAA is established as a non-profit motoring organisation and immediately becomes <strong style="color:var(--offwh)">the first to introduce a roadside assistance wrecking programme</strong> to Trinidad &amp; Tobago — setting the template for motorist support in the Caribbean region.</p>
+          </div>
+        </div>
+        <div class="tl-spine"><div class="dot-o"><div class="dot-i"></div></div></div>
+        <div class="tl-right empty"><div class="tl-card"></div></div>
+      </div>
+
+      <!-- 1930 — RIGHT -->
+      <div class="tl-row rev-r">
+        <div class="tl-left empty"><div class="tl-card"></div></div>
+        <div class="tl-spine"><div class="dot-o"><div class="dot-i"></div></div></div>
+        <div class="tl-right">
+          <div class="tl-card">
+            <span class="tl-yr">1930</span>
+            <h3>Traffic Lights Introduced to Trinidad</h3>
+            <p>The TTAA becomes <strong style="color:var(--offwh)">the first organisation to introduce and promote the use of traffic lights</strong> as part of a structured traffic management system in Trinidad — a foundational leap forward in organising road safety across the island.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1950 — LEFT -->
+      <div class="tl-row rev-l">
+        <div class="tl-left">
+          <div class="tl-card">
+            <span class="tl-yr">1950</span>
+            <h3>Legal Expenses Manslaughter Benefit</h3>
+            <p>Pioneering member protection: the TTAA becomes <strong style="color:var(--offwh)">the first to introduce a Legal Expenses Manslaughter Benefit</strong> for its members — providing legal coverage for motorists involved in fatal traffic incidents, a first-of-its-kind initiative in the Caribbean. (Currently not available).</p>
+          </div>
+        </div>
+        <div class="tl-spine"><div class="dot-o"><div class="dot-i"></div></div></div>
+        <div class="tl-right empty"><div class="tl-card"></div></div>
+      </div>
+
+      <!-- 1960 — RIGHT -->
+      <div class="tl-row rev-r">
+        <div class="tl-left empty"><div class="tl-card"></div></div>
+        <div class="tl-spine"><div class="dot-o"><div class="dot-i"></div></div></div>
+        <div class="tl-right">
+          <div class="tl-card">
+            <span class="tl-yr">1960</span>
+            <h3>Vehicle Import Standards Partnership</h3>
+            <p>The TTAA becomes <strong style="color:var(--offwh)">the first to partner with the Ministry of Transport – Licensing Division</strong> to register and approve all vehicles imported into T&amp;T — establishing critical roadworthiness standards that protect all road users across the country.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1970 — LEFT -->
+      <div class="tl-row rev-l">
+        <div class="tl-left">
+          <div class="tl-card">
+            <span class="tl-yr">1970</span>
+            <h3>Defensive Driving Comes to T&amp;T</h3>
+            <p>A watershed moment: the TTAA becomes <strong style="color:var(--offwh)">the first organisation to introduce, host and offer Defensive Driving classes</strong> to Trinidad &amp; Tobago. Over 50 years later, this programme continues to evolve — now featuring world-class motion simulation technology and international FIA recognition.</p>
+          </div>
+        </div>
+        <div class="tl-spine"><div class="dot-o"><div class="dot-i"></div></div></div>
+        <div class="tl-right empty"><div class="tl-card"></div></div>
+      </div>
+
+      <!-- 1977 — RIGHT -->
+      <div class="tl-row rev-r">
+        <div class="tl-left empty"><div class="tl-card"></div></div>
+        <div class="tl-spine"><div class="dot-o"><div class="dot-i"></div></div></div>
+        <div class="tl-right">
+          <div class="tl-card">
+            <span class="tl-yr">1977</span>
+            <h3>First &amp; Only IDP Issuer in T&amp;T</h3>
+            <p>The TTAA becomes <strong style="color:var(--offwh)">the first and only organisation authorised to issue International Driver Permits</strong> to T&amp;T nationals and CARICOM citizens — enabling legal driving in over 150 countries worldwide. This exclusive authority remains with the TTAA to this day.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1982 — LEFT — GOLD -->
+      <div class="tl-row rev-l">
+        <div class="tl-left">
+          <div class="tl-card" style="border-color:rgba(245,197,24,.3)">
+            <span class="tl-yr gld">1982</span>
+            <h3>Medal of Merit Gold — Road Safety</h3>
+            <p>The TTAA achieves its most prestigious national honour: becoming <strong style="color:var(--offwh)">the first and only automobile association ever awarded the Medal of Merit Gold for Road Safety by the Republic of Trinidad &amp; Tobago</strong>. This national award recognises outstanding contributions to road safety and public service.</p>
+            <div class="award-flag">🥇 Medal of Merit – Gold · Republic of Trinidad &amp; Tobago · 1982</div>
+          </div>
+        </div>
+        <div class="tl-spine"><div class="dot-o gld"><div class="dot-i"></div></div></div>
+        <div class="tl-right empty"><div class="tl-card"></div></div>
+      </div>
+
+      <!-- 2024 — RIGHT — GOLD -->
+      <div class="tl-row rev-r">
+        <div class="tl-left empty"><div class="tl-card"></div></div>
+        <div class="tl-spine"><div class="dot-o gld"><div class="dot-i"></div></div></div>
+        <div class="tl-right">
+          <div class="tl-card" style="border-color:rgba(245,197,24,.3)">
+            <span class="tl-yr gld">2024</span>
+            <h3>FIA Innovation Challenge — Featured Programme</h3>
+            <p>The TTAA's Motion Simulated Defensive Driving Programme — <em>"Stop the Carnage"</em> — is <strong style="color:var(--offwh)">featured by the FIA in the Innovation Challenge 2024 (Region III)</strong> as one of the leading road safety innovations across the Americas and Caribbean, cementing the TTAA's reputation as a world-class driver training institution.</p>
+            <div class="award-flag">⭐ FIA Innovation Challenge 2024 · Region III · Americas &amp; Caribbean</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TODAY — LEFT — CYAN -->
+      <div class="tl-row rev-l">
+        <div class="tl-left">
+          <div class="tl-card" style="border-color:rgba(45,212,250,.4);background:rgba(12,47,160,.22)">
+            <span class="tl-yr">Today</span>
+            <h3>Continuing the Legacy</h3>
+            <p>Under President Selwyn Persad, the TTAA continues advancing T&amp;T's motoring interests through cutting-edge driver training, active FIA participation, international advocacy, and community engagement. The <strong style="color:var(--offwh)">"On the Hunt" road rally series</strong> brings drivers and communities together in T&amp;T's spirit of adventure and road safety awareness.</p>
+          </div>
+        </div>
+        <div class="tl-spine"><div class="dot-o now"><div class="dot-i"></div></div></div>
+        <div class="tl-right empty"><div class="tl-card"></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════ IDP ══════ -->
+<section id="idp">
+  <div class="container">
+    <div class="idp-grid">
+      <div class="rev-l">
+        <span class="label">Travel Documents</span>
+        <h2 class="stitle">International<br><em>Driver Permit</em></h2>
+        <div class="divider"></div>
+        <p class="bt">The International Driver Permit (IDP) is an official document that translates your T&amp;T driver's licence into 12 international languages, allowing you to legally drive in over 150 countries worldwide. The TTAA has been the <strong style="color:var(--offwh)">sole authorised IDP issuer in Trinidad &amp; Tobago since 1977</strong>.</p>
+        <p class="bt">An IDP is <strong style="color:var(--offwh)">not a replacement</strong> for your national licence — it must be carried alongside it. Together, they give you the legal right to drive in the majority of countries around the globe.</p>
+        <p class="bt">The TTAA also issues IDPs to <strong style="color:var(--offwh)">CARICOM citizens</strong> — making us the regional hub for international driving documentation in the southern Caribbean.</p>
+        <div class="idp-steps">
+          <div class="idp-step"><div class="idp-snum">1</div><div><h4>Visit Our Office</h4><p>8 Francis Road, Maraval, Port of Spain. Office hours: Monday–Friday, 7:30am–2:30pm.</p></div></div>
+          <div class="idp-step"><div class="idp-snum">2</div><div><h4>Bring Your Documents</h4><p>Valid T&amp;T driver's licence, a recent passport-sized photo, and a valid passport or national ID.</p></div></div>
+          <div class="idp-step"><div class="idp-snum">3</div><div><h4>Pay the Application Fee</h4><p>The flat fee is <strong style="color:var(--offwh)">$240 TTD</strong> (includes photo). Contact us: <a href="tel:18682320987" style="color:var(--cyan)">1 (868) 232-0987</a>.</p></div></div>
+          <div class="idp-step"><div class="idp-snum">4</div><div><h4>Same-Day Issuance</h4><p>IDPs are typically processed the same day. <strong style="color:var(--offwh)">Renewal from abroad is also available</strong> — contact us for details.</p></div></div>
+        </div>
+        <a class="btn-p" href="#contact" style="margin-top:1.2rem">Apply for an IDP</a>
+      </div>
+      <div class="rev-r">
+        <div class="idp-box">
+          <h3>IDP Quick Facts</h3>
+          <div class="idp-fact">Valid in <strong style="color:var(--offwh)">&nbsp;150+ countries&nbsp;</strong> — Europe, Asia, Americas, Africa, and beyond.</div>
+          <div class="idp-fact">Issued to <strong style="color:var(--offwh)">&nbsp;T&amp;T nationals&nbsp;</strong> and all CARICOM citizens.</div>
+          <div class="idp-fact"><strong style="color:var(--offwh)">&nbsp;Renewal from abroad&nbsp;</strong> — even if you're already overseas.</div>
+          <div class="idp-fact">Translates your licence into <strong style="color:var(--offwh)">&nbsp;12 languages&nbsp;</strong> for recognition by foreign police and authorities.</div>
+          <div class="idp-fact"><strong style="color:var(--offwh)">&nbsp;Same-day processing&nbsp;</strong> at our Port of Spain office.</div>
+          <div class="idp-fact"><strong style="color:var(--offwh)">&nbsp;Only authorised issuer&nbsp;</strong> in Trinidad &amp; Tobago since 1977.</div>
+          <div class="ctry-chips">
+            <span class="chip">🇬🇧 United Kingdom</span><span class="chip">🇺🇸 USA</span><span class="chip">🇨🇦 Canada</span><span class="chip">🇩🇪 Germany</span><span class="chip">🇫🇷 France</span><span class="chip">🇯🇵 Japan</span><span class="chip">🇧🇷 Brazil</span><span class="chip">🇦🇺 Australia</span><span class="chip">🇿🇦 South Africa</span><span class="chip">🇮🇳 India</span><span class="chip">+ 140 more</span>
+          </div>
+          <div class="idp-docs">
+            <h4>Documents Required</h4>
+            <ul class="doc-list">
+              <li>Valid T&amp;T National Driver's Licence</li>
+              <li>Valid Passport or National ID card</li>
+              <li>One recent passport-sized photograph</li>
+              <li>Application fee: $240 TTD (photo included)</li>
+              <li>CARICOM nationals: valid national licence + ID</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ NEWS ══════ -->
+<section id="news">
+  <div class="container">
+    <div class="rev" style="max-width:600px">
+      <span class="label">Latest &amp; Featured</span>
+      <h2 class="stitle">News &amp; <em>Highlights</em></h2>
+      <div class="divider"></div>
+      <p class="bt">The TTAA in the spotlight — from international FIA recognition to community initiatives and membership updates.</p>
+    </div>
+    <div class="news-grid">
+      <div class="news-card rev">
+        <div class="news-cat">FIA Recognition · 2024</div>
+        <h3>TTAA "Stop the Carnage" Featured in FIA Innovation Challenge</h3>
+        <p>The TTAA's Motion Simulated Defensive Driving Programme was spotlighted by the FIA as part of the Innovation Challenge 2024 (Region III), recognising it alongside the top road safety innovations across the Americas and Caribbean. The programme uses simulation technology to let drivers practice challenging real-life scenarios safely off public roads.</p>
+        <div class="news-foot"><span class="news-date">May 2024</span><a class="news-lnk" href="https://www.fia.com/news/motion-simulated-defensive-driving-programme-stop-carnage-ttaa-trinidad-and-tobago" target="_blank">Read on FIA.com →</a></div>
+      </div>
+      <div class="news-card rev">
+        <div class="news-cat">Community Event · 2025</div>
+        <h3>"On the Hunt" — Road Trip Treasure Hunt &amp; Fun Rally</h3>
+        <p>The TTAA presents "On the Hunt" — a thrilling road trip treasure hunt and fun rally that blends teamwork, navigation, and adventure. Participants uncover hidden clues while exploring T&amp;T's scenic beauty and rich culture. Recognised by the FIA, this initiative promotes road safety, responsible driving, and community bonding while supporting local businesses and tourism.</p>
+        <div class="news-foot"><span class="news-date">2025</span><a class="news-lnk" href="https://www.fia.com/news/hunt-road-trip-treasure-hunt-fun-rally-ttaa-trinidad-tobago" target="_blank">Read on FIA.com →</a></div>
+      </div>
+      <div class="news-card rev">
+        <div class="news-cat">National Honour · 1982</div>
+        <h3>Medal of Merit Gold — Road Safety Excellence Recognised by the Republic</h3>
+        <p>In 1982, the TTAA became the first and only automobile association ever to receive the Medal of Merit Gold for Road Safety from the Republic of Trinidad &amp; Tobago. This landmark national honour recognised the TTAA's decades of pioneering work in traffic management, driver education, and motorist welfare across the twin islands.</p>
+        <div class="news-foot"><span class="news-date">1982</span><a class="news-lnk" href="#history">View Timeline →</a></div>
+      </div>
+      <div class="news-card rev">
+        <div class="news-cat">Training &amp; Technology</div>
+        <h3>FIA Region III Drone Technology Training Programme</h3>
+        <p>The TTAA participated in FIA Region III training initiatives covering drone technologies and emerging tools in road safety management — continuing the association's commitment to staying at the cutting edge of international road safety innovation and best practice.</p>
+        <div class="news-foot"><span class="news-date">2024–2025</span><a class="news-lnk" href="https://www.fia.com" target="_blank">FIA.com →</a></div>
+      </div>
+      <div class="news-card rev">
+        <div class="news-cat">Membership · Benefits</div>
+        <h3>Insurance Partnerships — Members Save Up to 10% on Premiums</h3>
+        <p>The TTAA's longstanding insurance discount partnerships with M&amp;M Insurance and Maritime Insurance continue to deliver real savings for members. With up to 10% off motor insurance premiums, the saving on most standard policies more than covers the full annual TTAA membership fee — making joining a smart financial decision for any T&amp;T driver.</p>
+        <div class="news-foot"><span class="news-date">Ongoing</span><a class="news-lnk" href="#membership">View Benefits →</a></div>
+      </div>
+      <div class="news-card rev">
+        <div class="news-cat">Road Safety · Advocacy</div>
+        <h3>TTAA Represents T&amp;T at FIA General Assemblies</h3>
+        <p>As an active FIA member club, the TTAA participates in FIA General Assemblies, representing T&amp;T's motoring interests on the world stage. The association contributes to global policy discussions on road safety, sustainable mobility, and motorist rights — ensuring T&amp;T's voice is heard in the international motoring community.</p>
+        <div class="news-foot"><span class="news-date">Annual</span><a class="news-lnk" href="https://www.fia.com" target="_blank">FIA.com →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CONTACT ══════ -->
+<section id="contact">
+  <div class="container">
+    <div class="rev" style="margin-bottom:3rem">
+      <span class="label">Get In Touch</span>
+      <h2 class="stitle">Contact <em>Us</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="rev-l">
+        <h3>Visit or Reach the TTAA</h3>
+        <div class="c-row"><div class="c-ico">📍</div><div><span class="c-lbl">Address</span><span class="c-val">8 Francis Road, Maraval,<br>Port of Spain, Trinidad &amp; Tobago</span></div></div>
+        <div class="c-row"><div class="c-ico">📞</div><div><span class="c-lbl">Telephone</span><span class="c-val"><a href="tel:18682320987">1 (868) 232-0987</a></span></div></div>
+        
+        <div class="c-row"><div class="c-ico">📱</div><div><span class="c-lbl">WhatsApp</span><span class="c-val"><a href="https://wa.me/18687362096">1 (868) 736-2096</a></span></div></div>
+        <div class="c-row"><div class="c-ico">✉️</div><div><span class="c-lbl">Email</span><span class="c-val"><a href="mailto:info@ttaa.co.tt">info@ttaa.co.tt</a></span></div></div>
+        <div class="c-row"><div class="c-ico">🕐</div><div><span class="c-lbl">Office Hours</span><span class="c-val">Monday – Friday<br>7:30am – 2:30pm</span></div></div>
+        <div class="soc-row">
+          <a class="soc-btn" href="https://www.facebook.com/ttaa.official/" target="_blank">Facebook</a>
+          <a class="soc-btn" href="https://www.instagram.com/ttaa.official/" target="_blank">Instagram</a>
+          <a class="soc-btn" href="https://twitter.com/ttaaofficial" target="_blank">X / Twitter</a>
+          <a class="soc-btn" href="https://www.youtube.com/channel/UC7RG-6LyHul8fMDnHbaj2NQ" target="_blank">YouTube</a>
+        </div>
+      </div>
+      <div class="rev-r">
+        <div class="form-wrap">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm" novalidate>
+            <!-- Honeypot — invisible to humans, bots fill it -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="f2">
+              <div class="frow"><label for="cf_first">First Name *</label><input type="text" id="cf_first" name="first_name" placeholder="John" required maxlength="80" /></div>
+              <div class="frow"><label for="cf_last">Last Name *</label><input type="text" id="cf_last" name="last_name" placeholder="Smith" required maxlength="80" /></div>
+            </div>
+            <div class="frow"><label for="cf_email">Email Address *</label><input type="email" id="cf_email" name="email" placeholder="your@email.com" required maxlength="160" /></div>
+            <div class="frow"><label for="cf_phone">Phone Number</label><input type="tel" id="cf_phone" name="phone" placeholder="+1 (868) ..." maxlength="30" /></div>
+            <div class="frow">
+              <label for="cf_interest">I'm Interested In</label>
+              <select id="cf_interest" name="interest">
+                <option value="">— Select a service —</option>
+                <option>Individual Membership</option>
+                <option>Fleet / Corporate Membership</option>
+                <option>Defensive Driver Training</option>
+                <option>International Driver Permit</option>
+                <option>Insurance Discount Information</option>
+                <option>General Enquiry</option>
+              </select>
+            </div>
+            <div class="frow"><label for="cf_message">Message *</label><textarea id="cf_message" name="message" placeholder="Tell us how we can help..." required maxlength="3000"></textarea></div>
+            <p style="font-size:.72rem;color:var(--text);margin-bottom:.9rem;line-height:1.5">
+              This site is protected by reCAPTCHA.
+              <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--cyan)">Privacy Policy</a> &amp;
+              <a href="https://policies.google.com/terms" target="_blank" style="color:var(--cyan)">Terms of Service</a> apply.
+            </p>
+            <button class="fsub" id="cfSubmit" type="submit">Send Message</button>
+            <div class="form-status" id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-top">
+      <div class="footer-brand">
+        <img src="images/TTAA_2026_Vertical.png" alt="TTAA" class="foot-logo" />
+        <p>The Trinidad &amp; Tobago Automobile Association has been protecting and advancing the interests of motorists since 1911. The official FIA member club for mobility and motoring in T&amp;T.</p>
+        <div class="affil-row" style="margin-top:1rem">
+          <img src="images/fia_emblem.png" alt="FIA" class="affil-logo" />
+          <img src="images/action-for-road-grande.png" alt="FIA Action for Road Safety" class="affil-logo" />
+          <img src="images/Environmental_Accreditation_1_Star.png" alt="FIA Environmental Accreditation" class="affil-logo" />
+          <img src="images/AIT.png" alt="AIT" class="affil-logo natural" />
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#idp">International Driver Permit</a></li>
+          <li><a href="#defensive">Defensive Driver Training</a></li>
+          <li><a href="#membership">Fleet Membership</a></li>
+          <li><a href="#membership">Insurance Discounts</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Organisation</h4>
+        <ul>
+          <li><a href="#about">About the TTAA</a></li>
+          <li><a href="#history">Our History</a></li>
+          <li><a href="#news">News &amp; Updates</a></li>
+          <li><a href="https://www.fia.com" target="_blank">FIA Global</a></li>
+          <li><a href="https://www.facebook.com/ttaa.official/" target="_blank">Facebook</a></li>
+          <li><a href="https://www.instagram.com/ttaa.official/" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">8 Francis Road, Maraval</a></li>
+          <li><a href="#">Port of Spain, T&amp;T</a></li>
+      
+          <li><a href="mailto:info@ttaa.co.tt">info@ttaa.co.tt</a></li>
+          <li><a href="https://wa.me/18687362096">WhatsApp: (868) 736-2096</a></li>
+          <li><a href="#">Mon–Fri: 7:30am–2:30pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <p>© 2025 Trinidad &amp; Tobago Automobile Association · Est. 1911 · All rights reserved.</p>
+      <div class="foot-mbadge"><span class="mbdot"></span>Official FIA Member Club · Trinidad &amp; Tobago</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Scroll reveal ── */
+  const els = document.querySelectorAll('.rev,.rev-l,.rev-r');
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.1}).observe ? (() => {
+    const io = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), {threshold:.1});
+    els.forEach(el => io.observe(el));
+  })() : els.forEach(el => el.classList.add('in'));
+
+  /* ── Mobile nav ── */
+  const hamEl = document.getElementById('ham');
+  const navEl = document.getElementById('navLinks');
+  hamEl.addEventListener('click', () => {
+    const open = navEl.classList.toggle('open');
+    navEl.style.cssText = open
+      ? `display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(3,14,46,.98);padding:1.3rem 2rem;gap:0;border-bottom:1px solid rgba(45,212,250,.15);z-index:888;`
+      : '';
+  });
+  navEl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navEl.classList.remove('open'); navEl.style.cssText = '';
+  }));
+
+  /* ── Nav opacity on scroll ── */
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').style.background =
+      window.scrollY > 60 ? 'rgba(3,14,46,.99)' : 'rgba(3,14,46,.94)';
+  });
+
+  /* ── Contact form submission ── */
+  const form     = document.getElementById('contactForm');
+  const btn      = document.getElementById('cfSubmit');
+  const status   = document.getElementById('formStatus');
+  const SITE_KEY = '6LcriRstAAAAALsMavZY9s6byi-qQHxgpV_jy4hm';
+
+  function showStatus(msg, type) {
+    status.textContent = msg;
+    status.className   = 'form-status ' + type;
+    status.style.display = 'block';
+    status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Basic client-side validation
+    const first   = form.first_name.value.trim();
+    const last    = form.last_name.value.trim();
+    const email   = form.email.value.trim();
+    const message = form.message.value.trim();
+    if (!first || !last || !email || !message) {
+      showStatus('Please fill in all required fields.', 'err');
+      return;
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Sending…';
+    status.style.display = 'none';
+
+    try {
+      // Get reCAPTCHA v3 token
+      const token = await new Promise((resolve, reject) => {
+        if (typeof grecaptcha === 'undefined') { reject(new Error('reCAPTCHA not loaded')); return; }
+        grecaptcha.ready(() => {
+          grecaptcha.execute(SITE_KEY, { action: 'contact_form' }).then(resolve).catch(reject);
+        });
+      });
+
+      const data = new FormData(form);
+      data.set('g-recaptcha-response', token);
+
+      const res  = await fetch('send_mail.php', { method: 'POST', body: data });
+      const json = await res.json();
+
+      if (json.success) {
+        showStatus(json.message || 'Thank you. We will be in touch shortly.', 'ok');
+        form.reset();
+      } else {
+        showStatus(json.message || 'Something went wrong. Please try again.', 'err');
+      }
+    } catch (err) {
+      showStatus('Network error. Please check your connection and try again.', 'err');
+    } finally {
+      btn.disabled    = false;
+      btn.textContent = 'Send Message';
+    }
+  });
+</script>
+</body>
+</html>
